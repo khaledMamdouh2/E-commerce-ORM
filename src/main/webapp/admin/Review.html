@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<html>
+
+<head>
+
+
+    <title>User Review</title>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/UserReviewScript.js"></script>
+    <link rel="stylesheet" href="css/previewStyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    
+</head>
+
+<!-- start of preview user data  -->
+<body onload="setInterval(function(){refresh();}, 2000)">
+
+<div class="container">
+    
+        <div class="data">
+
+            <input placeholder="User Email" id="uEmail" type="text" class="editTextff"/><br><br>
+            <button onclick="sendEmail()" class="ButtonSend">Review</button><br>
+           
+
+            <br>  
+        </div>  
+        <div class="card">
+            <img src="user_profile.jpg" alt="John" style="width:50%; height:50%">
+                <div id="userData">
+                    <h1>First name</h1>
+                    <p>Last Name</p>
+                    <p>Birth Date</p>
+                    <p>job</p>
+                    <p>email</p>
+                    <p>credit lemit</p>
+                    <p>credit number</p>
+                </div>
+                <div style="margin: 24px 0;">
+                  <a href="#"><i class="fa fa-dribbble"></i></a> 
+                  <a href="#"><i class="fa fa-twitter"></i></a>  
+                  <a href="#"><i class="fa fa-linkedin"></i></a>  
+                  <a href="#"><i class="fa fa-facebook"></i></a> 
+               </div>
+            <p><button class="btnedit">EDIT</button></p>
+        </div>
+
+</div>
+<!-- end of preview user data  -->
+        
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Mar 2, 2018, 8:05:54 AM
+    Author     : Passant
+*/
+
+.loginTable{
+    margin-top: 1%; 
+}
+
+.tableCell{
+    padding-right: 20px;
+    padding-bottom: 20px;
+}
+
+.inputs{
+    padding-bottom: 25px;
+}
+
+.inputFields{
+    padding: 6px;
+    text-align: center;
+}
+
+.loginBtn{
+    background: #1e1e27;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    width: 165px;
+    border: none;
+    height: 46px;
+    cursor: pointer;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: 10px;
+}
+
+.regtableCell{
+    padding-left: 40px;
+}
+
+.reginputFields{
+    text-align: center;  
+}

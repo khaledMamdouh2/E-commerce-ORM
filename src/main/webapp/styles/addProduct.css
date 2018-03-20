@@ -1,0 +1,50 @@
+#main {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+     background: -webkit-linear-gradient(45deg, #49a09d, #5f2c82);
+    background: linear-gradient(45deg, #49a09d, #5f2c82);
+    font-family: sans-serif;
+    font-weight: 100;
+
+}
+
+div , iframe {
+    margin:0 auto;
+
+}
+
+
+button ,h4{
+    padding:10px;
+    margin: 25px;
+}
+label {
+    cursor:pointer;
+    color: #5f3f3f; 
+   
+}
+
+form{
+    margin:0 auto;
+    width:300px
+}
+input{
+    margin-bottom:3px;
+    padding:10px;
+    width: 100%;
+    border:1px solid #CCC
+} 
+
+
+input[type=submit] , h4 {
+    padding:5px 15px; 
+    background:#ccc; 
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+    margin-top: 20px;
+    color: blue;
+}
