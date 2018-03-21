@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.pettopia.model.databaseInterfaces;
+package com.pettopia.model.daoInterfaces;
 
 import com.pettopia.model.bean.User;
 import java.util.ArrayList;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
  *
  * @author ahmedelgawesh
  */
-public interface AdminsDatabaseOperationInterface {
+public interface AdminDaoInterface {
 
     boolean  isExisAsAdmin(User adminEmail);
 

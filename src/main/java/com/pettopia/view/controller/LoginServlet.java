@@ -7,7 +7,7 @@ package com.pettopia.view.controller;
 
 import com.pettopia.controller.HelperController;
 import com.pettopia.model.bean.User;
-import com.pettopia.model.database.AdminDao;
+import com.pettopia.model.dao.AdminDao;
 import com.pettopia.view.utilities.ValidationChecks;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -76,8 +76,8 @@ public class LoginServlet extends HttpServlet {
                     String adminPassword = request.getParameter("password");
 
                     usrObj = adminDao.getAllAdmins(adminEmail);
-                    if ((usrObj.getEmail().equals(adminEmail))) {
-                        if (usrObj.getPassword().equals(adminPassword)) {
+                    if ((usrObj.getUseremail().equals(adminEmail))) {
+                        if (usrObj.getUserpassword().equals(adminPassword)) {
                             response.sendRedirect("admin/adminPanel.jsp");
                             session.setAttribute("adminLoggedin", "true");
                         } else {

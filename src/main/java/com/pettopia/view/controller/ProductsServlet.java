@@ -7,7 +7,7 @@ package com.pettopia.view.controller;
 
 import com.pettopia.controller.ProductsController;
 import com.pettopia.model.bean.Product;
-import com.pettopia.model.database.ProductDao;
+import com.pettopia.model.dao.ProductDao;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;

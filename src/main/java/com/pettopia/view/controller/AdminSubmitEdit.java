@@ -49,12 +49,7 @@ public class AdminSubmitEdit extends HttpServlet {
 	       
     Product temp = new Product(productId,productname,productprice,productsold,productdesc,productcategory);
     
-    System.out.println(temp.getId());
-    System.out.println(temp.getName());
-    System.out.println(temp.getCategory());
-    System.out.println(temp.getPrice());
-    System.out.println(temp.getQuantity());
-    System.out.println(temp.getDescription());
+    
      c.editProduct(temp);
      
      Gson g = new Gson();

@@ -59,12 +59,12 @@ public class AdminAddProduct extends HttpServlet {
         PrintWriter out = response.getWriter();
         Product temp = new Product();
 
-        temp.setId(1);
-        temp.setName(request.getParameter("productname"));
-        temp.setDescription(request.getParameter("productdesc"));
-        temp.setPrice(Double.parseDouble(request.getParameter("productprice").trim()));
+        temp.setProductid(1);
+        temp.setProductname(request.getParameter("productname"));
+        temp.setProductdescription(request.getParameter("productdesc"));
+        temp.setProductprice(Double.parseDouble(request.getParameter("productprice").trim()));
         temp.setCategory(request.getParameter("productcategory"));
-        temp.setQuantity("y");
+        temp.setSoldYn("y");
 
         c.adminInsertProduct(temp);
 
@@ -98,19 +98,19 @@ public class AdminAddProduct extends HttpServlet {
                     switch (item.getFieldName()) {
                         case "productname":
 
-                            temp.setName(item.getString());
+                            temp.setProductname(item.getString());
                             break;
                         case "productdesc":
-                            temp.setDescription(item.getString());
+                            temp.setProductdescription(item.getString());
                             break;
                         case "productprice":
-                            temp.setPrice(Double.valueOf(item.getString().trim()));
+                            temp.setProductprice(Double.valueOf(item.getString().trim()));
                             break;
                         case "productcategory":
                         	temp.setCategory(item.getString());
                         	break;
                     }
-                    temp.setQuantity("n");
+                    temp.setSoldYn("n");
                     
                 } else {
 

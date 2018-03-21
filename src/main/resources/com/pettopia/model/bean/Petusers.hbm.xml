@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 21, 2018 11:04:54 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class name="com.pettopia.model.bean.User" optimistic-lock="version" schema="PET" table="PETUSERS">
+    <id name="userid" type="int">
+      <column name="USERID" precision="22" scale="0"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="userfname" type="string">
+      <column length="30" name="USERFNAME"/>
+    </property>
+    <property name="userlname" type="string">
+      <column length="30" name="USERLNAME"/>
+    </property>
+    <property name="userbirthdate" type="date">
+      <column length="7" name="USERBIRTHDATE"/>
+    </property>
+    <property name="userpassword" type="string">
+      <column length="30" name="USERPASSWORD"/>
+    </property>
+    <property name="userjob" type="string">
+      <column length="30" name="USERJOB"/>
+    </property>
+    <property name="useremail" type="string">
+      <column length="30" name="USEREMAIL" unique="true"/>
+    </property>
+    <property name="usercreditnumber" type="long">
+      <column name="USERCREDITNUMBER" precision="22" scale="0"/>
+    </property>
+    <property name="usercreditlimit" type="long">
+      <column name="USERCREDITLIMIT" precision="22" scale="0"/>
+    </property>
+    <property name="useraddress" type="string">
+      <column length="30" name="USERADDRESS"/>
+    </property>
+  </class>
+</hibernate-mapping>

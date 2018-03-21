@@ -74,13 +74,13 @@ public class AdminEditProduct extends HttpServlet {
         
        Product p = c.getProductById(productId);
        
-       if(p.getId()!=0)
+       if(p.getProductid()!=0)
        {
     	   
-       System.out.println(p.getName());
-       System.out.println(p.getPrice());
-       System.out.println(p.getQuantity());
-       System.out.println(p.getDescription());
+       System.out.println(p.getProductname());
+       System.out.println(p.getProductprice());
+       System.out.println(p.getSoldYn());
+       System.out.println(p.getProductdescription());
        
        // create ajax object to send back 
        

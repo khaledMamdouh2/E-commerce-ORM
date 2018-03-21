@@ -5,7 +5,7 @@
  */
 package com.pettopia.view.controller;
 
-import com.pettopia.model.database.AdminDao;
+import com.pettopia.model.dao.AdminDao;
 import com.pettopia.view.utilities.ValidationChecks;
 import java.io.IOException;
 import java.io.PrintWriter;

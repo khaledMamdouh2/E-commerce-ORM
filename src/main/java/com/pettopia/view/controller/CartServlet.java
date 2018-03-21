@@ -47,7 +47,7 @@ public class CartServlet extends HttpServlet {
         String productId = request.getParameter("productID");
         boolean isExist = false;
         for (int counter = 0; counter < listedProducts.size(); counter++) {
-            if (listedProducts.get(counter).getId() == Integer.parseInt(productId)) {
+            if (listedProducts.get(counter).getProductid()== Integer.parseInt(productId)) {
                 isExist = true;
             }
         }

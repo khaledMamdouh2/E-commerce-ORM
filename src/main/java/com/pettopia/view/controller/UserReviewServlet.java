@@ -11,7 +11,7 @@ package com.pettopia.view.controller;
 
 import com.google.gson.Gson;
 import com.pettopia.model.bean.User;
-import com.pettopia.model.database.UserDao;
+import com.pettopia.model.dao.UserDao;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Serializable;

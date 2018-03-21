@@ -6,8 +6,7 @@
 package com.pettopia.view.controller;
 
 import com.pettopia.model.bean.User;
-import com.pettopia.model.database.AdminDao;
-import com.pettopia.model.databaseInterfaces.AdminsDatabaseOperationInterface;
+import com.pettopia.model.dao.AdminDao;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -16,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import com.pettopia.model.daoInterfaces.AdminDaoInterface;
 
 /**
  *
@@ -61,8 +61,8 @@ public class AdminLoginServlet extends HttpServlet {
         String adminPassword = request.getParameter("password");
 
         usrObj = adminDao.getAllAdmins(adminEmail);
-        if ((usrObj.getEmail().equals(adminEmail))) {
-            if (usrObj.getPassword().equals(adminPassword)) {
+        if ((usrObj.getUseremail().equals(adminEmail))) {
+            if (usrObj.getUserpassword().equals(adminPassword)) {
                 response.sendRedirect("admin/adminPanel.jsp");
                 session.setAttribute("adminLoggedin", "true");
             } else {

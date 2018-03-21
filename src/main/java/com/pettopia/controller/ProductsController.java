@@ -6,7 +6,7 @@
 package com.pettopia.controller;
 
 import com.pettopia.model.bean.Product;
-import com.pettopia.model.database.ProductDao;
+import com.pettopia.model.dao.ProductDao;
 import java.util.ArrayList;
 
 /**

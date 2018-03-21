@@ -6,7 +6,7 @@
 package com.pettopia.view.controller;
 
 import com.pettopia.controller.UserController;
-import com.pettopia.model.database.UserDao;
+import com.pettopia.model.dao.UserDao;
 import com.pettopia.view.utilities.ValidationChecks;
 import java.io.IOException;
 import java.time.LocalDate;

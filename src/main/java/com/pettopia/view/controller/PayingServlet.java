@@ -38,7 +38,7 @@ public class PayingServlet extends HttpServlet {
         if (listedProducts != null) {
             String productId = request.getParameter("deletedProductID");
             for (int counter = 0; counter < listedProducts.size(); counter++) {
-                if (Integer.parseInt(productId) == listedProducts.get(counter).getId()) {
+                if (Integer.parseInt(productId) == listedProducts.get(counter).getProductid()) {
                     listedProducts.remove(counter);
                     request.getSession().setAttribute("cartProductsNo", listedProducts.size());
                     request.setAttribute("cartListedProducts", listedProducts);
@@ -62,11 +62,11 @@ public class PayingServlet extends HttpServlet {
             if (listedProducts != null && email != null && creditLimit != null) {
                 long bill = 0;
                 for (int counter = 0; counter < listedProducts.size(); counter++) {
-                    bill += listedProducts.get(counter).getPrice();
+                    bill += listedProducts.get(counter).getProductprice();
                 }
                 if (Long.parseLong(creditLimit) >= bill) {
                     for (int counter = 0; counter < listedProducts.size(); counter++) {
-                        int productId = listedProducts.get(counter).getId();
+                        int productId = listedProducts.get(counter).getProductid();
                         pCtrl.makeProductSold(productId);
                     }
                     listedProducts = new ArrayList<>();

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 21, 2018 11:04:54 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class name="com.pettopia.model.bean.Product" optimistic-lock="version" schema="PET" table="PETPRODUCTS">
+    <id name="productid" type="int">
+      <column name="PRODUCTID" precision="22" scale="0"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="productname" type="string">
+      <column length="30" name="PRODUCTNAME"/>
+    </property>
+    <property name="productprice" type="double">
+      <column name="PRODUCTPRICE" precision="22" scale="0"/>
+    </property>
+    <property name="productdescription" type="string">
+      <column length="200" name="PRODUCTDESCRIPTION"/>
+    </property>
+    <property name="soldYn" type="string">
+      <column length="1" name="SOLD_YN"/>
+    </property>
+    <property name="category" type="string">
+      <column length="100" name="CATEGORY"/>
+    </property>
+  </class>
+</hibernate-mapping>
