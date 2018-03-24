@@ -46,13 +46,7 @@
             <jsp:include page="productManage.jsp"/>
         </div>
 
-        <div id="usersPanel" class="tabcontent" hidden="">
-            <jsp:include page="TEST.jsp"/>
-        </div>
-
-        <div id="adminPanel" class="tabcontent" hidden="">
-            <jsp:include page="TEST.jsp"/>
-        </div>
+    
 
         <!-- ********************** end of tabs *************************  -->
 
