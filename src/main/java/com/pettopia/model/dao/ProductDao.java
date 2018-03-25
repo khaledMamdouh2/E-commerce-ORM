@@ -31,10 +31,10 @@ public class ProductDao implements ProductDaoInterface {
     @Override
     public boolean buyProduct(int productId) {
 
-//        String strStatment = "update petproducts set sold_yn='y'  where productid='" + productId + "')";
+//        String strStatment = "update petproducts p set sold_yn='y'  where productid='" + productId + "')";
 //        return productsCrud.update(strStatment);
-        Query query = session.createQuery("update Product set soldYn = :state"
-                + " where productid = :productid");
+        Query query = session.createQuery("update Product p set p.soldYn = :state"
+                + " where p.productid = :productid");
         query.setParameter("state", 'y');
         query.setParameter("productid", productId);
         int result = query.executeUpdate();
@@ -51,7 +51,7 @@ public class ProductDao implements ProductDaoInterface {
 //        String statement = "select * from petproducts where productid=" + id;
 //        return productsCrud.select(statement, "");
 
-        Query query = session.createQuery("from petproducts where productid = :id ");
+        Query query = session.createQuery("from Product  where productid = :id ");
         query.setParameter("id", id);
         Product pro = (Product) query.getSingleResult();
         return pro;
@@ -62,7 +62,7 @@ public class ProductDao implements ProductDaoInterface {
 //        String statement = "select * from petproducts where lower(sold_yn)='n'";
 //        return productsCrud.getAll(statement);
 
-        Query query = session.createQuery("from Product where lower(soldYn) = :state ");
+        Query query = session.createQuery("from Product p where lower(p.soldYn) = :state ");
         query.setParameter("state", 'n');
         ArrayList<Product> produscts = (ArrayList<Product>) query.list();
         return produscts;
@@ -82,14 +82,14 @@ public class ProductDao implements ProductDaoInterface {
         ArrayList<Product> produscts;
         try {
             Double.parseDouble(item);
-            Query query = session.createQuery("from Product where productprice = :item ");
+            Query query = session.createQuery("from Product p where p.productprice = :item ");
             query.setParameter("item", item);
             produscts = (ArrayList<Product>) query.list();
         } catch (NumberFormatException e) {
 
             try {
 
-                Query query = session.createQuery("from Product where category = :item ");
+                Query query = session.createQuery("from Product p where p.category = :item ");
                 query.setParameter("item", item);
                 produscts = (ArrayList<Product>) query.list();
 
@@ -124,9 +124,9 @@ public class ProductDao implements ProductDaoInterface {
 
 //        String strStatment = "update petproducts set productname='" + productsInformations.getName() + "',productprice='" + productsInformations.getPrice() + "',sold_yn='" + productsInformations.getQuantity() + "',productdescription='" + productsInformations.getDescription() + "',category='" + productsInformations.getCategory() + "' where productid='" + productsInformations.getId() + "'";
 //        return productsCrud.update(strStatment);
-        Query query = session.createQuery("update Product set productname = :proName,"
-                + "productprice =: price , soldYn := quantity,productdescription := desc,category := cat"
-                + " where productid = :productid");
+        Query query = session.createQuery("update Product p set p.productname = :proName,"
+                + "p.productprice =: price , p.soldYn := quantity,p.productdescription := desc,p.category := cat"
+                + " where p.productid = :productid");
         query.setParameter("proName", productsInformations.getProductname());
         query.setParameter("price", productsInformations.getProductprice());
         query.setParameter("quantity", productsInformations.getSoldYn());
@@ -147,7 +147,7 @@ public class ProductDao implements ProductDaoInterface {
     public boolean deleteProducts(int productId) {
 //        String strStatment = "delete  from petproducts where productid ='" + productId + "' ";
 //        return productsCrud.update(strStatment);
-        Query query = session.createQuery("delete Product where productid =: 'proId'");
+        Query query = session.createQuery("delete Product p where p.productid =: 'proId'");
         query.setParameter("proId", productId);
         int result = query.executeUpdate();
         if (result == 1) {
@@ -161,7 +161,7 @@ public class ProductDao implements ProductDaoInterface {
     public ArrayList<Product> selectProducts(String productsName) {
 //        String selectStatement = "select  * from petproducts where  productname= '" + productsName + "'";
 //        return productsCrud.select(selectStatement);
-        Query query = session.createQuery("from Product where productname = :proName ");
+        Query query = session.createQuery("from Product p where p.productname = :proName ");
         query.setParameter("proName", productsName);
         ArrayList<Product> produscts = (ArrayList<Product>) query.list();
         return produscts;
@@ -171,7 +171,7 @@ public class ProductDao implements ProductDaoInterface {
     public Product selectOneProduct(int productId) {
 //        String selectStatement = "select  * from petproducts where  productid= '" + productId + "'";
 //        return productsCrud.select(selectStatement, "one");
-        Query query = session.createQuery("from Product where productid = :id ");
+        Query query = session.createQuery("from Product p where p.productid = :id ");
         query.setParameter("id", productId);
         Product pro = (Product) query.getSingleResult();
         return pro;
@@ -193,8 +193,8 @@ public class ProductDao implements ProductDaoInterface {
 //        String s = "update petproducts set sold_yn = 'y' where productid="+id;
 //        return productsCrud.update(s);
 
-        Query query = session.createQuery("update Product set soldYn = :state"
-                + " where productid = :productid");
+        Query query = session.createQuery("update Product p set p.soldYn = :state"
+                + " where p.productid = :productid");
         query.setParameter("state", 'y');
         query.setParameter("productid", id);
         int result = query.executeUpdate();
