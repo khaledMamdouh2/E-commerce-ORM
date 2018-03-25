@@ -57,7 +57,7 @@
                                 <div class="col-lg-12 image_col order-lg-2 order-1">
                                     <div class="single_product_image">
                                         <div class="single_product_image_background" >
-                                            <img style="display: block; min-height:100%; width: 100%; max-width: 100%;" src="productImage?id=${requestScope.product.id}">
+                                            <img style="display: block; min-height:100%; width: 100%; max-width: 100%;" src="productImage?id=${requestScope.product.productid}">
                                         </div>
                                     </div>
                                 </div>
@@ -67,19 +67,19 @@
                     <div class="col-lg-5">
                         <div class="product_details">
                             <div class="product_details_title">
-                                <h2>${requestScope.product.name}</h2>
-                                <p>${requestScope.product.description}</p>
+                                <h2>${requestScope.product.productname}</h2>
+                                <p>${requestScope.product.productdescription}</p>
                             </div>
                             <div class="free_delivery d-flex flex-row align-items-center justify-content-center">
                                 <span class="ti-truck"></span><span>free delivery</span>
                             </div>
                             <br><br>
-                            <div class="product_price">$${requestScope.product.price}</div>
+                            <div class="product_price">$${requestScope.product.productprice}</div>
 
 
                             <div class="quantity d-flex flex-column flex-sm-row align-items-sm-center">
                                 <form action="CartServlet" method="POST">
-                                    <input type="hidden" name="productID" value="${requestScope.product.id}"/>
+                                    <input type="hidden" name="productID" value="${requestScope.product.productid}"/>
                                     <button class="newsletter_submit_btn trans_300" style="color:#FFF; width:150%;">add to cart</button>
                                 </form>
                             </div>

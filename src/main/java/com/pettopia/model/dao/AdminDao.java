@@ -32,58 +32,55 @@ public class AdminDao implements AdminDaoInterface {
     public boolean isExisAsAdmin(User adminEmail) {
 //        String statm = "select * from petadmin where adminemail='" + adminEmail + "'";
 //        return adminCrud.select(statm);
-		
-    	if (!adminEmail.getUseremail().equals(""))
-		{
-			String query = "from Petadmin p where p.adminemail like :email";
-			Query q = session.createQuery(query).setString("email", adminEmail.getUseremail());
-			List result = q.list();
-			System.out.println(result);
-			return true;
-		} else {
-			return false;
-		}
+
+        if (!adminEmail.getUseremail().equals("")) {
+            String query = "from Petadmin p where p.adminemail like :email";
+            Query q = session.createQuery(query).setString("email", adminEmail.getUseremail());
+            List result = q.list();
+            System.out.println(result);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
     public boolean addNewAdmin(String adminEmail, String adminPassword) {
 //        String statm = "insert into  petadmin (adminemail,adminpassword) VALUES ('" + adminEmail + "','" + adminPassword + "')";
 //        return adminCrud.insert(statm);
-		
-    	if (!(adminEmail.equals("") && adminPassword.equals(""))) {
-			Petadmin newAdmin = new Petadmin(adminEmail, adminPassword);
-			session.beginTransaction();
-			session.persist(newAdmin);
-			session.getTransaction().commit();
-			System.out.println("new admin is added with data" + adminEmail + "," + adminPassword);
-			return true;
-		} else {
-			return false;
-		}
+
+        if (!(adminEmail.equals("") && adminPassword.equals(""))) {
+            Petadmin newAdmin = new Petadmin(adminEmail, adminPassword);
+            session.beginTransaction();
+            session.persist(newAdmin);
+            session.getTransaction().commit();
+            System.out.println("new admin is added with data" + adminEmail + "," + adminPassword);
+            return true;
+        } else {
+            return false;
+        }
     }
-    
-     @Override
+
+    @Override
     public User getAllAdmins(String adminEmail) {
 //        String statm = "select * from petadmin where adminemail='" + adminEmail + "'";
 //        return adminCrud.select(statm,"");
-    	 
-    	 if (!adminEmail.equals(""))
- 		{
- 			String query = "from Petadmin p where p.adminemail like :email";
- 			Query q = session.createQuery(query).setString("email", adminEmail);
- 			List result = q.list();
- 			System.out.println(result);
- 			
- 			Petadmin  admin = (Petadmin) result.get(0);
- 			User u = new User() ;
- 			 u.setUseremail(admin.getAdminemail());
- 			 u.setUserpassword(admin.getAdminpassword());
- 			
- 			return u;
- 		} else {
- 			return null;
- 		}
 
+        if (!adminEmail.equals("")) {
+            String query = "from Petadmin p where p.adminemail like :email";
+            Query q = session.createQuery(query).setString("email", adminEmail);
+            List result = q.list();
+            System.out.println(result);
+            if (result != null && result.size()>0) {
+                Petadmin admin = (Petadmin) result.get(0);
+                User u = new User();
+                u.setUseremail(admin.getAdminemail());
+                u.setUserpassword(admin.getAdminpassword());
+
+                return u;
+            } 
+                
+        }
+        return null;
     }
-
 }

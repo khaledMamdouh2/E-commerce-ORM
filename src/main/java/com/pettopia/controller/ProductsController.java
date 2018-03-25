@@ -34,7 +34,7 @@ public class ProductsController {
         return dao.insertProducts(p);
     }
 
-    public int getNextSeq() {
+    public Long getNextSeq() {
         return dao.getNextSeq();
     }
 

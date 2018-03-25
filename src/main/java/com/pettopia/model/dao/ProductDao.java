@@ -11,9 +11,12 @@ import java.util.ArrayList;
 
 import com.pettopia.model.daoInterfaces.ProductDaoInterface;
 import com.pettopia.model.factories.SessionsFactory;
+import java.math.BigInteger;
 import java.util.List;
+import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.query.Query;
+import org.hibernate.type.StandardBasicTypes;
+
 
 /**
  *
@@ -63,7 +66,7 @@ public class ProductDao implements ProductDaoInterface {
 //        return productsCrud.getAll(statement);
 
         Query query = session.createQuery("from Product p where lower(p.soldYn) = :state ");
-        query.setParameter("state", 'n');
+        query.setParameter("state", "n");
         ArrayList<Product> produscts = (ArrayList<Product>) query.list();
         return produscts;
     }
@@ -179,13 +182,16 @@ public class ProductDao implements ProductDaoInterface {
     }
 
     @Override
-    public int getNextSeq() {
+    public Long getNextSeq() {
 //
 //        String ss = "select PRODUCTS_SEQ.nextval from dual";
 //        return productsCrud.getLast(ss);
-        Query query = session.createQuery("select d.PRODUCTS_SEQ from dual d ");
-        int seq = (int) query.getSingleResult();
-        return seq;
+        Query query = 
+        session.createSQLQuery("select PRODUCTS_SEQ.nextval as num from dual")
+            .addScalar("num", StandardBasicTypes.BIG_INTEGER);
+
+    return ((BigInteger) query.uniqueResult()).longValue();
+        
     }
 
     @Override

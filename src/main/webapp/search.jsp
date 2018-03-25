@@ -57,16 +57,16 @@
                                     <div class="product-item men">
                                         <div class="product discount product_filter">
                                             
-                                    <img style="display: block; height:77%; width: 100%; max-width: 100%;" src="productImage?id=${item.id}" alt="">
+                                    <img style="display: block; height:77%; width: 100%; max-width: 100%;" src="productImage?id=${item.productid}" alt="">
                                             
 
                                             <div class="product_info">
-                                                <h6 class="product_name"><a href="productDetails?id=${item.id}">${item.name}</a></h6>
-                                                <div class="product_price">$ ${item.price}</div>
+                                                <h6 class="product_name"><a href="productDetails?id=${item.productid}">${item.productname}</a></h6>
+                                                <div class="product_price">$ ${item.productprice}</div>
                                             </div>
                                         </div>
                                         <form action="CartServlet" method="POST">
-                                            <input type="hidden" name="productID" value="${item.id}"/>
+                                            <input type="hidden" name="productID" value="${item.productid}"/>
                                             <button class="red_button add_to_cart_button" style="color:#FFF;">add to cart</button>
                                         </form>
                                     </div>

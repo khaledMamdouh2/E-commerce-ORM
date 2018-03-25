@@ -32,7 +32,7 @@ public interface ProductDaoInterface {
 
     public boolean buyProduct(int productId);
     
-    public int getNextSeq();
+    public Long getNextSeq();
     
     public ArrayList<Product> getNeededProducts(String item);
 
