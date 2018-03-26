@@ -33,7 +33,7 @@ public class UserDao implements UserDaoInterface {
         if (!usrEmail.equals("")) {
             List<User> listofusers;
 
-            String query = "from petusers u where u.useremail like :email";
+            String query = "from User u where u.useremail like :email";
             Query q = session.createQuery(query).setString("email", usrEmail);
             listofusers = (List<User>) q.list();
             return (ArrayList<User>) listofusers;
@@ -45,99 +45,106 @@ public class UserDao implements UserDaoInterface {
 
     @Override
     public User selectUser(String usrEmail) {
-// String selectStatement = "select  * from petusers where  useremail= '" + usrEmail + "'";
+// String selectStatement = "select  * from User where  useremail= '" + usrEmail + "'";
 //        return  usersCrud.select(selectStatement,"onlyone");
 
-        if (!usrEmail.equals("")) {
-            String query = "from petusers u where u.useremail like :email";
+            String query = "from User u where u.useremail like :email";
             Query q = session.createQuery(query).setString("email", usrEmail);
             List result = q.list();
             System.out.println(result);
-
-            User user = (User) result.get(0);
-
-            return user;
-        } else {
-            return null;
+            try {
+                User user = (User) result.get(0);
+                return user;
+            } catch (Exception e) {
+                return null;
+                }
+            
         }
 
-    }
-
-    @Override
-    public boolean isUserExist(String usrEmail) {
+        @Override
+        public boolean isUserExist
+        (String usrEmail
+        
+            ) {
 //   String selectStatement = "select userid, userfName, userlName, userbirthDate, userpassword, userjob, useremail, useraddress, usercreditLimit, usercreditnumber from petusers where  useremail= '" + usrEmail + "'";
 //        return  usersCrud.select(selectStatement,"","");
         if (!usrEmail.equals("")) {
-            String query = "from petusers u where u.useremail like :email";
-            Query q = session.createQuery(query).setString("email", usrEmail);
-            List result = q.list();
-            System.out.println(result);
-            return true;
-        } else {
-            return false;
+                String query = "from User u where u.useremail like :email";
+                Query q = session.createQuery(query).setString("email", usrEmail);
+                List result = q.list();
+                System.out.println(result);
+                return true;
+            } else {
+                return false;
+            }
+
         }
 
-    }
-
-    @Override
-    public boolean registerNewUser(User usrDataObj) {
+        @Override
+        public boolean registerNewUser
+        (User usrDataObj
+        
+            ) {
 //        System.out.println(String.valueOf(java.sql.Date.valueOf(usrDataObj.getBirthDate())));
 //        String selectStatment = "insert into petusers (userfName,userlName,userbirthDate,userpassword,userjob,useremail,useraddress,usercreditLimit,usercreditNumber) values ('" + usrDataObj.getFirstName() + "' ,'" + usrDataObj.getLastName() + "' , TO_DATE('"+usrDataObj.getBirthDate()+"','YYYY-MM-DD'),'" + usrDataObj.getPassword() + "' ,'" + usrDataObj.getJob() + "' ,'" + usrDataObj.getEmail() + "' ,'" + usrDataObj.getAddress() + "' ," + usrDataObj.getCreditLimit() + "," + usrDataObj.getCreditNo() + ")";
 //        return usersCrud.insert(selectStatment);
         if (!(usrDataObj.getUserbirthdate().equals("")
-                && usrDataObj.getUseraddress().equals("") && usrDataObj.getUsercreditlimit() == 0 && usrDataObj.getUsercreditnumber() == 0
-                && usrDataObj.getUseremail().equals("") && usrDataObj.getUserfname().equals("") && usrDataObj.getUserlname().equals("") && usrDataObj.getUserjob().equals("")
-                && usrDataObj.getUserpassword().equals(""))) {
+                    && usrDataObj.getUseraddress().equals("") && usrDataObj.getUsercreditlimit() == 0 && usrDataObj.getUsercreditnumber() == 0
+                    && usrDataObj.getUseremail().equals("") && usrDataObj.getUserfname().equals("") && usrDataObj.getUserlname().equals("") && usrDataObj.getUserjob().equals("")
+                    && usrDataObj.getUserpassword().equals(""))) {
 
-            User newuser = new User();
+                User newuser = new User();
 
-            newuser.setUseraddress(usrDataObj.getUseraddress());
-            newuser.setUserbirthdate(usrDataObj.getUserbirthdate());
-            newuser.setUsercreditnumber(usrDataObj.getUsercreditlimit());
-            newuser.setUsercreditlimit(usrDataObj.getUsercreditlimit());
-            newuser.setUseremail(usrDataObj.getUseremail());
-            newuser.setUserfname(usrDataObj.getUserfname());
-            newuser.setUserpassword(usrDataObj.getUserpassword());
-            newuser.setUserjob(usrDataObj.getUserjob());
-            newuser.setUserlname(usrDataObj.getUserfname());
-            session.beginTransaction();
-            session.persist(newuser);
-            session.getTransaction().commit();
+                newuser.setUseraddress(usrDataObj.getUseraddress());
+                newuser.setUserbirthdate(usrDataObj.getUserbirthdate());
+                newuser.setUsercreditnumber(usrDataObj.getUsercreditlimit());
+                newuser.setUsercreditlimit(usrDataObj.getUsercreditlimit());
+                newuser.setUseremail(usrDataObj.getUseremail());
+                newuser.setUserfname(usrDataObj.getUserfname());
+                newuser.setUserpassword(usrDataObj.getUserpassword());
+                newuser.setUserjob(usrDataObj.getUserjob());
+                newuser.setUserlname(usrDataObj.getUserfname());
+                session.beginTransaction();
+                session.persist(newuser);
+                session.getTransaction().commit();
 
-            return true;
-        } else {
-            return false;
+                return true;
+            } else {
+                return false;
+            }
+
         }
 
-    }
-
-    @Override
-    public boolean updateUser(User usrDataObj) {
+        @Override
+        public boolean updateUser
+        (User usrDataObj
+        
+            ) {
 //        String selectStatment = "update petusers set userfName='" + usrDataObj.getFirstName() + "' ,userlName='" + usrDataObj.getLastName() + "' ,userbirthDate= TO_DATE('"+usrDataObj.getBirthDate()+"','YYYY-MM-DD'), userpassword='" + usrDataObj.getPassword() + "' ,userjob='" + usrDataObj.getJob() + "' ,useraddress='" + usrDataObj.getAddress() + "' ,usercreditlimit=" + usrDataObj.getCreditLimit() + " ,usercreditnumber='" + usrDataObj.getCreditNo() + "' where useremail ='" + usrDataObj.getEmail()+"'";
 //        return usersCrud.update(selectStatment);
 
         if (isUserExist(usrDataObj.getUseremail())) {
-            User olduser = (User) session.get(User.class, usrDataObj.getUserid());
-            User newuser = new User();
+                User olduser = (User) session.get(User.class, usrDataObj.getUserid());
+                User newuser = new User();
 
-            newuser.setUseraddress(olduser.getUseraddress());
-            newuser.setUserbirthdate(olduser.getUserbirthdate());
-            newuser.setUsercreditnumber(olduser.getUsercreditlimit());
-            newuser.setUsercreditlimit(olduser.getUsercreditlimit());
-            newuser.setUseremail(olduser.getUseremail());
-            newuser.setUserfname(olduser.getUserfname());
-            newuser.setUserpassword(olduser.getUserpassword());
-            newuser.setUserjob(olduser.getUserjob());
-            newuser.setUserlname(olduser.getUserfname());
-            session.beginTransaction();
-            session.update(newuser);
-            session.getTransaction().commit();
+                newuser.setUseraddress(olduser.getUseraddress());
+                newuser.setUserbirthdate(olduser.getUserbirthdate());
+                newuser.setUsercreditnumber(olduser.getUsercreditlimit());
+                newuser.setUsercreditlimit(olduser.getUsercreditlimit());
+                newuser.setUseremail(olduser.getUseremail());
+                newuser.setUserfname(olduser.getUserfname());
+                newuser.setUserpassword(olduser.getUserpassword());
+                newuser.setUserjob(olduser.getUserjob());
+                newuser.setUserlname(olduser.getUserfname());
+                session.beginTransaction();
+                session.update(newuser);
+                session.getTransaction().commit();
 
-            return true;
-        } else {
-            return false;
+                return true;
+            } else {
+                return false;
+            }
+
         }
 
     }
-
-}
